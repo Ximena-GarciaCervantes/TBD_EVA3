@@ -1,0 +1,97 @@
+EVA3_1_Funciones
+
+MySQL Shell 8.0.38
+
+Copyright (c) 2016, 2024, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 33
+Server version: 8.0.39 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| company            |
+| empresa            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| tbd_e1             |
+| tbd_e2             |
+| world              |
++--------------------+
+10 rows in set (0.0022 sec)
+ MySQL  localhost:3306 ssl  SQL > use empresa;
+Default schema set to `empresa`.
+Fetching global names, object names from `empresa` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  empresa  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| company            |
+| empresa            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| tbd_e1             |
+| tbd_e2             |
+| world              |
++--------------------+
+10 rows in set (0.0023 sec)
+ MySQL  localhost:3306 ssl  empresa  SQL > select count(*) from countries;
++----------+
+| count(*) |
++----------+
+|       27 |
++----------+
+1 row in set (0.0261 sec)
+ MySQL  localhost:3306 ssl  empresa  SQL > select regresa_valor();
++-----------------+
+| regresa_valor() |
++-----------------+
+|               0 |
++-----------------+
+1 row in set (0.0295 sec)
+ MySQL  localhost:3306 ssl  empresa  SQL > select mostrar_mensaje();
+ERROR: 1318 (42000): Incorrect number of arguments for FUNCTION empresa.mostrar_mensaje; expected 1, got 0
+ MySQL  localhost:3306 ssl  empresa  SQL > select mostrar_mensaje("pepe");
++-------------------------+
+| mostrar_mensaje("pepe") |
++-------------------------+
+| Tu mensaje: pepe        |
++-------------------------+
+1 row in set (0.0202 sec)
+ MySQL  localhost:3306 ssl  empresa  SQL > select sumar_numeros2(4,3);
++---------------------+
+| sumar_numeros2(4,3) |
++---------------------+
+|                   7 |
++---------------------+
+1 row in set (0.0019 sec)
+ MySQL  localhost:3306 ssl  empresa  SQL > select sumar_numeros2(4,44);
++----------------------+
+| sumar_numeros2(4,44) |
++----------------------+
+|                   48 |
++----------------------+
+1 row in set (0.0016 sec)
+ MySQL  localhost:3306 ssl  empresa  SQL > select sumar_numeros2(19,17);
++-----------------------+
+| sumar_numeros2(19,17) |
++-----------------------+
+|                    36 |
++-----------------------+
+1 row in set (0.0015 sec)
+(i-search)`':
