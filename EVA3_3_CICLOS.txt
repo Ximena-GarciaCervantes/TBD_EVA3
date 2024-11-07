@@ -1,0 +1,158 @@
+EVA3_3_CICLOS
+
+MySQL Shell 8.0.38
+
+Copyright (c) 2016, 2024, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 35
+Server version: 8.0.39 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > use tbd_e3;
+Default schema set to `tbd_e3`.
+Fetching global names, object names from `tbd_e3` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select sumatoria_loop(5);
++-------------------+
+| sumatoria_loop(5) |
++-------------------+
+|                15 |
++-------------------+
+1 row in set (0.0033 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select sumatoria_loop(10);
++--------------------+
+| sumatoria_loop(10) |
++--------------------+
+|                 55 |
++--------------------+
+1 row in set (0.0008 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select sumatoria_loop(2);
++-------------------+
+| sumatoria_loop(2) |
++-------------------+
+|                 3 |
++-------------------+
+1 row in set (0.0006 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select sumatoria_while(2);
++--------------------+
+| sumatoria_while(2) |
++--------------------+
+|                  3 |
++--------------------+
+1 row in set (0.0017 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select sumatoria_while(5);
++--------------------+
+| sumatoria_while(5) |
++--------------------+
+|                 15 |
++--------------------+
+1 row in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select sumatoria_while(10);
++---------------------+
+| sumatoria_while(10) |
++---------------------+
+|                  55 |
++---------------------+
+1 row in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select sumatoria_repeat(5);
++---------------------+
+| sumatoria_repeat(5) |
++---------------------+
+|                   1 |
++---------------------+
+1 row in set (0.0206 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select sumatoria_repeat(2);
++---------------------+
+| sumatoria_repeat(2) |
++---------------------+
+|                   1 |
++---------------------+
+1 row in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select sumatoria_repeat(10);
++----------------------+
+| sumatoria_repeat(10) |
++----------------------+
+|                    1 |
++----------------------+
+1 row in set (0.0006 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select sumatoria_repeat(10);
++----------------------+
+| sumatoria_repeat(10) |
++----------------------+
+|                   55 |
++----------------------+
+1 row in set (0.0030 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select sumatoria_repeat(5);
++---------------------+
+| sumatoria_repeat(5) |
++---------------------+
+|                  15 |
++---------------------+
+1 row in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select calcular_potencia_repeat(3,2)
+                                       -> ;
++------------------------+
+| calcular_potencia(3,2) |
++------------------------+
+|                      9 |
++------------------------+
+1 row in set (0.0018 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select calcular_potencia_repeat(5,2) ;
++------------------------+
+| calcular_potencia(5,2) |
++------------------------+
+|                     25 |
++------------------------+
+1 row in set (0.0006 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select calcular_potencia_repeat(5,4) ;
++------------------------+
+| calcular_potencia(5,4) |
++------------------------+
+|                    625 |
++------------------------+
+1 row in set (0.0006 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > SELECT calcular_potencia_while(2,2)
+                                       -> ;
++------------------------------+
+| calcular_potencia_while(2,2) |
++------------------------------+
+|                            4 |
++------------------------------+
+1 row in set (0.0028 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > SELECT calcular_potencia_while(3,2) ;
++------------------------------+
+| calcular_potencia_while(3,2) |
++------------------------------+
+|                            9 |
++------------------------------+
+1 row in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > SELECT calcular_potencia_while(5,4) ;
++------------------------------+
+| calcular_potencia_while(5,4) |
++------------------------------+
+|                          625 |
++------------------------------+
+1 row in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > SELECT calcualr_potencia_loop(5,4);
+ERROR: 1305 (42000): FUNCTION tbd_e3.calcualr_potencia_loop does not exist
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > SELECT calcular_potencia_loop(5,4);
++-----------------------------+
+| calcular_potencia_loop(5,4) |
++-----------------------------+
+|                         625 |
++-----------------------------+
+1 row in set (0.0030 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > SELECT calcular_potencia_loop(3,2);
++-----------------------------+
+| calcular_potencia_loop(3,2) |
++-----------------------------+
+|                           9 |
++-----------------------------+
+1 row in set (0.0008 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL >
