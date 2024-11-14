@@ -1,0 +1,141 @@
+EVA3_6_CURSORES
+
+MySQL Shell 8.0.38
+
+Copyright (c) 2016, 2024, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 12
+Server version: 8.0.39 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| company            |
+| empresa            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| tbd_e1             |
+| tbd_e2             |
+| tbd_e3             |
+| world              |
++--------------------+
+11 rows in set (0.0228 sec)
+ MySQL  localhost:3306 ssl  SQL > use tbd_e3;
+Default schema set to `tbd_e3`.
+Fetching global names, object names from `tbd_e3` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > create table(id int key not null);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(id int key not null)' at line 1
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > create table prueba(id int key not null);
+Query OK, 0 rows affected (0.0846 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > desc prueba;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | NO   | PRI | NULL    |       |
++-------+------+------+-----+---------+-------+
+1 row in set (0.0218 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > call insertar_prueba();
+ERROR: 1318 (42000): Incorrect number of arguments for PROCEDURE tbd_e3.insertar_prueba; expected 1, got 0
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > call insertar_prueba(1);
++-------------------------------+
+| Mensaje                       |
++-------------------------------+
+| Clave correctamente insertada |
++-------------------------------+
+1 row in set (0.0300 sec)
+
+Query OK, 0 rows affected (0.0300 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > call insertar_prueba(1);
++------------------------+
+| Mensaje                |
++------------------------+
+| Error: Clave Duplicada |
++------------------------+
+1 row in set (0.0015 sec)
+
+Query OK, 0 rows affected (0.0015 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > use empresa;
+Default schema set to `empresa`.
+Fetching global names, object names from `empresa` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  empresa  SQL > show tables;
++-------------------+
+| Tables_in_empresa |
++-------------------+
+| countries         |
+| departments       |
+| employees         |
+| job_history       |
+| jobs              |
+| locations         |
+| prueba            |
+| regions           |
++-------------------+
+8 rows in set (0.0032 sec)
+ MySQL  localhost:3306 ssl  empresa  SQL > desc countries;
++--------------+---------------+------+-----+---------+-------+
+| Field        | Type          | Null | Key | Default | Extra |
++--------------+---------------+------+-----+---------+-------+
+| COUNTRY_ID   | varchar(2)    | NO   | PRI | NULL    |       |
+| COUNTRY_NAME | varchar(40)   | YES  |     | NULL    |       |
+| REGION_ID    | decimal(10,0) | YES  | MUL | NULL    |       |
++--------------+---------------+------+-----+---------+-------+
+3 rows in set (0.0041 sec)
+ MySQL  localhost:3306 ssl  empresa  SQL > set @valor = 0;
+Query OK, 0 rows affected (0.0206 sec)
+ MySQL  localhost:3306 ssl  empresa  SQL > call contar_paises(@valor);
+Query OK, 0 rows affected (0.0257 sec)
+ MySQL  localhost:3306 ssl  empresa  SQL > select @valor;
++--------+
+| @valor |
++--------+
+|     30 |
++--------+
+1 row in set (0.0012 sec)
+ MySQL  localhost:3306 ssl  empresa  SQL > select * from countries;
++------------+--------------------------+-----------+
+| COUNTRY_ID | COUNTRY_NAME             | REGION_ID |
++------------+--------------------------+-----------+
+| AR         | Argentina                |         2 |
+| AU         | Australia                |         3 |
+| BE         | Belgium                  |         1 |
+| BR         | Brazil                   |         2 |
+| CA         | Canada                   |         2 |
+| CH         | Switzerland              |         1 |
+| CN         | China                    |         3 |
+| DE         | Germany                  |         1 |
+| DK         | Denmark                  |         1 |
+| EG         | Egypt                    |         4 |
+| FR         | France                   |         1 |
+| HK         | HongKong                 |         3 |
+| IL         | Israel                   |         4 |
+| IN         | India                    |         3 |
+| IT         | Italy                    |         1 |
+| JP         | Japan                    |         3 |
+| KW         | Kuwait                   |         4 |
+| MX         | Mexico                   |         2 |
+| NG         | Nigeria                  |         4 |
+| NL         | Netherlands              |         1 |
+| PG         | PANGEA                   |      NULL |
+| SG         | Singapore                |         3 |
+| UK         | United Kingdom           |         1 |
+| US         | United States of America |         2 |
+| XX         | NULL                     |      NULL |
+| YY         | OTRO                     |         1 |
+| ZM         | Zambia                   |         4 |
+| ZW         | Zimbabwe                 |         4 |
+| ZZ         | SIN PAIS                 |         1 |
++------------+--------------------------+-----------+
+29 rows in set (0.0209 sec)
+ MySQL  localhost:3306 ssl  empresa  SQL >
