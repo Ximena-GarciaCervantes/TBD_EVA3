@@ -1,0 +1,129 @@
+EVA3_8_CURSORES_P
+
+MySQL Shell 8.0.38
+
+Copyright (c) 2016, 2024, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 11
+Server version: 8.0.39 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| company            |
+| empresa            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| tbd_e1             |
+| tbd_e2             |
+| tbd_e3             |
+| world              |
++--------------------+
+11 rows in set (0.0021 sec)
+ MySQL  localhost:3306 ssl  SQL > use company;
+Default schema set to `company`.
+Fetching global names, object names from `company` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  company  SQL > show tables;
++-------------------+
+| Tables_in_company |
++-------------------+
+| anualsalary       |
+| businessunit      |
+| connection        |
+| department        |
+| employees         |
+| ethnicity         |
+| gender            |
+| hiredate_exitdate |
+| job               |
+| location          |
++-------------------+
+10 rows in set (0.0045 sec)
+ MySQL  localhost:3306 ssl  company  SQL > use tbd_e3;
+Default schema set to `tbd_e3`.
+Fetching global names, object names from `tbd_e3` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > show tables;
++------------------+
+| Tables_in_tbd_e3 |
++------------------+
+| productos        |
+| prueba           |
++------------------+
+2 rows in set (0.0034 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > CREATE TABLE personas (id INT AUTO_INCREMENT PRIMARY KEY, nombre VARCHAR(50) NOT NULL, apellido_pat VARCHAR(50) NOT NULL, apellido_mat VARCHAR(50), fecha_nac DATE NOT NULL, clave_rfc VARCHAR(13));
+Query OK, 0 rows affected (0.0654 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > desc table;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > desc personas;
++--------------+-------------+------+-----+---------+----------------+
+| Field        | Type        | Null | Key | Default | Extra          |
++--------------+-------------+------+-----+---------+----------------+
+| id           | int         | NO   | PRI | NULL    | auto_increment |
+| nombre       | varchar(50) | NO   |     | NULL    |                |
+| apellido_pat | varchar(50) | NO   |     | NULL    |                |
+| apellido_mat | varchar(50) | YES  |     | NULL    |                |
+| fecha_nac    | date        | NO   |     | NULL    |                |
+| clave_rfc    | varchar(13) | YES  |     | NULL    |                |
++--------------+-------------+------+-----+---------+----------------+
+6 rows in set (0.0056 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > INSERT INTO personas (nombre, apellido_pat, apellido_mat, fecha_nac) VALUES ('Miriam', 'Torres', 'Gomez', '1997-02-16'), ('Martha', 'Jurado', 'Miranda', '2000-09-21'), ('Francisco', 'Lara', 'Laurel', '2004-03-09'),  ('Anastasia', 'Gutierrez', 'Garcia', '1995-12-24'), ('Juana', 'Moreno', NULL, '1989-10-05');
+Query OK, 5 rows affected (0.0343 sec)
+
+Records: 5  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select * from personas;
++----+-----------+--------------+--------------+------------+-----------+
+| id | nombre    | apellido_pat | apellido_mat | fecha_nac  | clave_rfc |
++----+-----------+--------------+--------------+------------+-----------+
+|  1 | Miriam    | Torres       | Gomez        | 1997-02-16 | NULL      |
+|  2 | Martha    | Jurado       | Miranda      | 2000-09-21 | NULL      |
+|  3 | Francisco | Lara         | Laurel       | 2004-03-09 | NULL      |
+|  4 | Anastasia | Gutierrez    | Garcia       | 1995-12-24 | NULL      |
+|  5 | Juana     | Moreno       | NULL         | 1989-10-05 | NULL      |
++----+-----------+--------------+--------------+------------+-----------+
+5 rows in set (0.0017 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > SELECT generar_rfc('Miriam', 'Torres', 'Gomez', '1997-02-16');
++--------------------------------------------------------+
+| generar_rfc('Miriam', 'Torres', 'Gomez', '1997-02-16') |
++--------------------------------------------------------+
+| TOGM970216                                             |
++--------------------------------------------------------+
+1 row in set (0.0230 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > SELECT * FROM personas;
++----+-----------+--------------+--------------+------------+-----------+
+| id | nombre    | apellido_pat | apellido_mat | fecha_nac  | clave_rfc |
++----+-----------+--------------+--------------+------------+-----------+
+|  1 | Miriam    | Torres       | Gomez        | 1997-02-16 | NULL      |
+|  2 | Martha    | Jurado       | Miranda      | 2000-09-21 | NULL      |
+|  3 | Francisco | Lara         | Laurel       | 2004-03-09 | NULL      |
+|  4 | Anastasia | Gutierrez    | Garcia       | 1995-12-24 | NULL      |
+|  5 | Juana     | Moreno       | NULL         | 1989-10-05 | NULL      |
++----+-----------+--------------+--------------+------------+-----------+
+5 rows in set (0.0025 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > CALL generar_rfc();
+ERROR: 1305 (42000): PROCEDURE tbd_e3.generar_rfc does not exist
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > CALL actualizar_rfc();
+Query OK, 0 rows affected (0.0331 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > SELECT * FROM personas;
++----+-----------+--------------+--------------+------------+------------+
+| id | nombre    | apellido_pat | apellido_mat | fecha_nac  | clave_rfc  |
++----+-----------+--------------+--------------+------------+------------+
+|  1 | Miriam    | Torres       | Gomez        | 1997-02-16 | TOGM970216 |
+|  2 | Martha    | Jurado       | Miranda      | 2000-09-21 | JUMM000921 |
+|  3 | Francisco | Lara         | Laurel       | 2004-03-09 | LALF040309 |
+|  4 | Anastasia | Gutierrez    | Garcia       | 1995-12-24 | GUGA951224 |
+|  5 | Juana     | Moreno       | NULL         | 1989-10-05 | MOXJ891005 |
++----+-----------+--------------+--------------+------------+------------+
+5 rows in set (0.0013 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL >
